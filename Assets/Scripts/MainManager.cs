@@ -60,6 +60,13 @@ public class MainManager : MonoBehaviour
                 Ball.AddForce(forceDir * 2.0f, ForceMode.VelocityChange);
             }
         }
+        else if (m_Started)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
         else if (m_GameOver)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -68,6 +75,7 @@ public class MainManager : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
+                Singleton.Instance.SaveBestResult();
                 SceneManager.LoadScene(0);
             }
         }

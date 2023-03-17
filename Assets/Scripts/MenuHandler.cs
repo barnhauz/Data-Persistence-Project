@@ -17,6 +17,7 @@ public class MenuHandler : MonoBehaviour
 
     void Start()
     {
+        Singleton.Instance.LoadBestResult();
         bestScoreText.text = $"Best Score: {Singleton.Instance.s_bestPlayerName} ({Singleton.Instance.s_bestScore})";
     }
 
