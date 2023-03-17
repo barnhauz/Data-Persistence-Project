@@ -28,6 +28,7 @@ public class MenuHandler : MonoBehaviour
     public void QuitGame()
     {
         EditorApplication.ExitPlaymode();
+        Singleton.Instance.SaveBestResult();
     }    
 
     public void CaptureName()

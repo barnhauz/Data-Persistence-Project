@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class Singleton : MonoBehaviour
 {
@@ -21,8 +22,20 @@ public class Singleton : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    private void Update()
+    [System.Serializable]
+    public class BestResult
     {
-        // Debug.Log(s_bestScore);
+        public string s_bestPlayerName;
+        public int s_bestScore;
+    }
+
+    public void SaveBestResult()
+    {
+        BestResult bestResult = new BestResult();
+        bestResult.s_bestPlayerName = s_bestPlayerName;
+        bestResult.s_bestScore = s_bestScore;
+
+        string savedResult = JsonUtility.ToJson(bestResult);
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", savedResult);
     }
 }
