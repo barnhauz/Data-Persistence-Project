@@ -60,13 +60,6 @@ public class MainManager : MonoBehaviour
                 Ball.AddForce(forceDir * 2.0f, ForceMode.VelocityChange);
             }
         }
-        else if (m_Started)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                SceneManager.LoadScene(0);
-            }
-        }
         else if (m_GameOver)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -79,6 +72,8 @@ public class MainManager : MonoBehaviour
                 SceneManager.LoadScene(0);
             }
         }
+
+        ReturnToMenu();
     }
 
     void AddPoint(int point)
@@ -99,7 +94,19 @@ public class MainManager : MonoBehaviour
         }
 
         m_GameOver = true;
+        //m_Started = false;
         GameOverText.SetActive(true);
         bestScoreText.text = $"Best Score: {Singleton.Instance.s_bestPlayerName} ({Singleton.Instance.s_bestScore})";
+    }
+
+    void ReturnToMenu()
+    {
+        if (m_Started)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
     }
 }

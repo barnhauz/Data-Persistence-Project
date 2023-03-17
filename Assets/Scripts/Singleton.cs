@@ -41,11 +41,11 @@ public class Singleton : MonoBehaviour
 
     public void LoadBestResult()
     {
-        string resultPath = Application.persistentDataPath + "/savefile.json";
+        string savefilePath = Application.persistentDataPath + "/savefile.json";
         
-        if (File.Exists(resultPath))
+        if (File.Exists(savefilePath))
         {
-            string loadedResult = File.ReadAllText(resultPath);
+            string loadedResult = File.ReadAllText(savefilePath);
             BestResult bestResult = JsonUtility.FromJson<BestResult>(loadedResult);
             s_bestPlayerName = bestResult.s_bestPlayerName;
             s_bestScore = bestResult.s_bestScore;
